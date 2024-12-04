@@ -22,7 +22,7 @@ Route::prefix('books')->middleware(['auth'])
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
-        Route::delete('{id}/delete', 'destroy')->name('destroy');
+        Route::delete('/{id}/destroy', 'destroy')->name('destroy');
     });
 
 Route::get('/dashboard', function () {
