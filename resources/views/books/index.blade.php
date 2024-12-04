@@ -24,6 +24,8 @@
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">冊数</th>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">価格</th>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">出版日</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -34,6 +36,13 @@
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->item_number }}</td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->item_amount }}</td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->published }}</td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3">
+                                  <form method="POST" action="{{ route('books.destroy', [ 'id' => $book->id ])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-danger-button>削除</x-danger-button>
+                                  </form>
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
