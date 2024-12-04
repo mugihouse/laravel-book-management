@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('item_number');
             $table->integer('item_amount');
             $table->dateTime('published');
+            $table->timestamps();
         });
     }
 
