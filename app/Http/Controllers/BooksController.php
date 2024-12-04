@@ -7,9 +7,30 @@ use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
-    public function index() {}
+    public function index()
+    {
+        // $books = Book::select('item_name')->get();
 
-    public function store() {}
+        return view('books.index');
+    }
+
+    public function create()
+    {
+        return view('books.create');
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $test = Book::create([
+            'item_name' => $request->item_name,
+            'item_number' => $request->item_number,
+            'item_amount' => $request->item_amount,
+            'published' => '2017-03-07 00:00:00'
+        ]);
+
+        return to_route('books.index');
+    }
 
     public function edit() {}
 
