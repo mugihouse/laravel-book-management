@@ -36,5 +36,12 @@ class BooksController extends Controller
 
     public function update() {}
 
-    public function destroy() {}
+    public function destroy($id)
+    {
+        $book = Book::find($id);
+
+        $book->delete();
+
+        return to_route('books.index');
+    }
 }
