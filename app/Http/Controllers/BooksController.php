@@ -9,9 +9,9 @@ class BooksController extends Controller
 {
     public function index()
     {
-        // $books = Book::select('item_name')->get();
+        $books = Book::orderBy('created_at', 'asc')->get();
 
-        return view('books.index');
+        return view('books.index', compact('books'));
     }
 
     public function create()
