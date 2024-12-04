@@ -20,6 +20,7 @@ Route::prefix('books')->middleware(['auth'])
     ->name('books.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
         Route::delete('{id}/delete', 'destroy')->name('destroy');
     });
