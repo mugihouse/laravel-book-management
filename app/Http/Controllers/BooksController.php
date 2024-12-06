@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\StoreBookRequest;
+
 class BooksController extends Controller
 {
     public function index()
@@ -19,9 +21,8 @@ class BooksController extends Controller
         return view('books.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        // dd($request);
         $test = Book::create([
             'item_name' => $request->item_name,
             'item_number' => $request->item_number,
