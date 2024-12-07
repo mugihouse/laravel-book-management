@@ -30,7 +30,7 @@ class BooksController extends Controller
             'published' => '2017-03-07 00:00:00'
         ]);
 
-        return to_route('books.index');
+        return to_route('books.index')->with('message', '本登録が完了しました');
     }
 
     public function edit($id)
