@@ -33,9 +33,26 @@ class BooksController extends Controller
         return to_route('books.index');
     }
 
-    public function edit() {}
+    public function edit($id)
+    {
+        $book = Book::find($id);
 
-    public function update() {}
+        return view('books.edit', compact('book'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $book = Book::find($id);
+
+        $book->item_name = $request->item_name;
+        $book->item_number = $request->item_number;
+        $book->item_amount = $request->item_amount;
+        $book->published = $request->published;
+
+        $book->save();
+
+        return to_route('books.index');
+    }
 
     public function destroy($id)
     {
