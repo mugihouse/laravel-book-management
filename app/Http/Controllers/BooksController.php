@@ -6,12 +6,13 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreBookRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BooksController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('created_at', 'asc')->paginate(3);
+        $books = Book::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->paginate(3);
 
         return view('books.index', compact('books'));
     }
@@ -24,6 +25,7 @@ class BooksController extends Controller
     public function store(StoreBookRequest $request)
     {
         $test = Book::create([
+            'user_id' => Auth::user()->id,
             'item_name' => $request->item_name,
             'item_number' => $request->item_number,
             'item_amount' => $request->item_amount,
@@ -35,14 +37,14 @@ class BooksController extends Controller
 
     public function edit($id)
     {
-        $book = Book::find($id);
+        $book = Book::where('user_id', Auth::user()->id)->find($id);
 
         return view('books.edit', compact('book'));
     }
 
     public function update(Request $request, $id)
     {
-        $book = Book::find($id);
+        $book = Book::where('user_id', Auth::user()->id)->find($id);
 
         $book->item_name = $request->item_name;
         $book->item_number = $request->item_number;
