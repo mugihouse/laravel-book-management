@@ -38,7 +38,10 @@
                             @foreach($books as $book)
                             <tr>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->id }}</td>
-                                <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->item_name }}</td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3">
+                                    <div>{{ $book->item_name }}</div>
+                                    <div><img src="upload/{{$book->item_img}}" width="150" height="100"></div>
+                                </td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->item_number }}</td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->item_amount }}</td>
                                 <td class="border-t-2 border-gray-200 px-4 py-3">{{ $book->published }}</td>
