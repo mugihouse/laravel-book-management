@@ -24,11 +24,21 @@ class BooksController extends Controller
 
     public function store(StoreBookRequest $request)
     {
+        $file = $request->file('item_img');
+
+        if (!empty($file)) {
+            $filename = $file->getClientOriginalName();
+            $move = $file->move('../public/upload/', $filename);
+        } else {
+            $filename = '';
+        }
+
         $test = Book::create([
             'user_id' => Auth::user()->id,
             'item_name' => $request->item_name,
             'item_number' => $request->item_number,
             'item_amount' => $request->item_amount,
+            'item_img' => $filename,
             'published' => '2017-03-07 00:00:00'
         ]);
 

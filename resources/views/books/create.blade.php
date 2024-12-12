@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                   <x-input-error :messages="$errors->all()" class="mt-2" />
                     <section class="text-gray-600 body-font relative">
-                      <form method="post" action="{{ route('books.store') }}">
+                      <form method="post" enctype="multipart/form-data" action="{{ route('books.store') }}">
                         @csrf
                         <div class="container px-5 mx-auto">
                           <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -38,6 +38,12 @@
                                 <div class="relative">
                                   <label for="published" class="leading-7 text-sm text-gray-600">出版日</label>
                                   <input type="date" id="published" name="published" value="{{ old('published') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                              </div>
+                              <div class="p-2 w-full">
+                                <div class="relative">
+                                  <label for="item_img" class="leading-7 text-sm text-gray-600">画像</label>
+                                  <input type="file" id="item_img" name="item_img" value="{{ old('item_img') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                               </div>
                               <div class="p-2 w-full">
